@@ -4,7 +4,17 @@ export default class Nav extends Component {
     render(){
         return(
             <div>
-                this is the Nav Component
+                <div>
+                    <img/>
+                    <h4></h4>
+                </div>
+                    <div>
+                        <button>Home</button>
+                        <button>New Post</button>
+                    </div>
+                <div>
+                    <button>Logout</button>
+                </div>
             </div>
         )
     }
