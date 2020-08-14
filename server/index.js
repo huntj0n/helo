@@ -24,6 +24,12 @@ massive({
 })
 
 //ENDPOINTS
-
+//auth
+app.post('/auth/login', ctrl.login)
+app.post('/auth/register', ctrl.register)
+app.get('/auth/logout', ctrl.logout)
+//post
+app.post('/api/post', ctrl.createPost)
+app.get('/api/posts/:id', ctrl.getUserPosts)
 
 app.listen(SERVER_PORT, ()=> console.log(`This mission is too important for me to allow you to jeopardize it. server running on ${SERVER_PORT}`))

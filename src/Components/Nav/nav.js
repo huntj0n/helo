@@ -6,7 +6,7 @@ export default class Nav extends Component {
             <div>
                 <div>
                     <img/>
-                    <h4></h4>
+                    <h4>username</h4>
                 </div>
                     <div>
                         <button>Home</button>

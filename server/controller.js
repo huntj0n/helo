@@ -2,8 +2,8 @@ const bcrypt = require('bcrypt')
 
 module.eexports = {
     register: async (req, res) => {
+        const db = req.app.get('db')
         const {username, password} = req.body,
-            db = req.app.get('db')
         const user = await db.check_user({username});
         if(user[0]){
             return res.status(400).send('Im sorry Dave, that username is taken')
@@ -15,8 +15,8 @@ module.eexports = {
         res.status(201).send(req.sent.user)
     },
     login: async (req, res) => {
-        const {username, password} = req.body;
         const db = req.app.get('db')
+        const {username, password} = req.body;
 
         const user = await db.check_user({username});
         if(!user[0]){
@@ -34,5 +34,22 @@ module.eexports = {
     logout: (req, res) => {
         req.session.destroy();
         res.sendStatus(200);
-    }
+    },
+    newPost: (req, res)=> {
+        const db = req.app.get('db');
+        const {id, title, img, content, author_id} = req.body;
+
+        db.post.new_post(id, title, img, content, author_id)
+        .then(()=> res.sentStatus(200))
+        .catch(err => res.status(404).send(err))
+    },  
+    getUserPosts: ()=> {
+        const db = req.app.get('db');
+        const {id} = req.params;
+
+        db.post.get_user_posts(id)
+        .then(posts => res.status(200).send(posts))
+        .catch(err => res.status(404).send(err))
+    },
+
 }

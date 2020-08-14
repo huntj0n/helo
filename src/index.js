@@ -4,17 +4,16 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {HashRouter} from 'react-router-dom';
-// import {Provider} from 'react-redux';
-// import store from './ducks/store'
+import {Provider} from 'react-redux';
+import store from './ducks/store'
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <Provider> */}
+    <Provider store={store}>
       <HashRouter> 
-      {/* store={store} */}
         <App />
       </HashRouter>
-    {/* </Provider> */}
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

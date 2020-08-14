@@ -27,7 +27,7 @@ export default class Post extends Component {
                     </content>
                 </div>
                 <div>
-                    <h3></h3>
+                    <h3>username</h3>
                     <img/>
                 </div>
             </div>
